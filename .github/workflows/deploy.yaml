@@ -50,25 +50,25 @@ jobs:
         working-directory: terraform
 
     - name: Initialize Terraform
-      run: ./terraform terraform init
+      run: terraform init
 
     - name: Apply Terraform configuration
       if: ${{ github.event.inputs.Action == 'Plan' }}
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run:  ./terraform terraform plan 
+      run:  terraform plan 
 
     - name: Apply Terraform configuration
       if: ${{ github.event.inputs.Action == 'Apply' }}
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: ./terraform terraform apply -auto-approve
+      run: terraform apply -auto-approve
 
     - name: Destroy Terraform configuration
       if: ${{ github.event.inputs.Action == 'Destroy' }}
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: ./terraform terraform destroy -auto-approve        
+      run: terraform destroy -auto-approve        
