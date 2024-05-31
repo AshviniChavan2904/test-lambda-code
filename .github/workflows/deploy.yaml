@@ -28,13 +28,6 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Install packages
-      run: |
-      apt install awscli -y
-      aws --version
-      sudo apt install zip -y
-      which zip 
-
     - name: Configure AWS Credentials
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
