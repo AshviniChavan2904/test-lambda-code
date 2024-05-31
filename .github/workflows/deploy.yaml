@@ -1,4 +1,4 @@
-name: Deploy Lambda
+name: My Workflow
 
 on:
   workflow_dispatch:
