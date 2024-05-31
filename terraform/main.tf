@@ -32,6 +32,6 @@ resource "aws_lambda_function" "hello_world_lambda" {
   s3_bucket        = data.aws_s3_bucket.test_bucket.id
   s3_key           = "hello-world-lambda.zip"
   handler          = "index.handler"
-  runtime          = "nodejs14.x"
+  runtime          = "nodejs20.x"
   role             = aws_iam_role.lambda_role.arn
 }
