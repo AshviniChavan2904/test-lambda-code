@@ -34,5 +34,4 @@ resource "aws_lambda_function" "hello_world_lambda" {
   handler          = "index.handler"
   runtime          = "nodejs14.x"
   role             = aws_iam_role.lambda_role.arn
-  source_code_hash = filebase64sha256("hello-world-lambda.zip")
 }
