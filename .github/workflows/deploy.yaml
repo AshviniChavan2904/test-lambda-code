@@ -48,25 +48,25 @@ jobs:
       uses: hashicorp/setup-terraform@v1
 
     - name: Initialize Terraform
-      run: terraform init
+      run: ./terraform terraform init
 
     - name: Apply Terraform configuration
       if: ${{ github.event.inputs.Action == 'Plan' }}
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run:  terraform plan 
+      run:  ./terraform terraform plan 
 
     - name: Apply Terraform configuration
       if: ${{ github.event.inputs.Action == 'Apply' }}
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: terraform apply -auto-approve
+      run: ./terraform terraform apply -auto-approve
 
     - name: Destroy Terraform configuration
       if: ${{ github.event.inputs.Action == 'Destroy' }}
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: terraform destroy -auto-approve        
+      run: ./terraform terraform destroy -auto-approve        
