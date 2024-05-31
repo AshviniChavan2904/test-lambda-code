@@ -20,6 +20,11 @@ resource "aws_iam_role" "lambda_role" {
       }
     ]
   })
+  lifecycle {
+    ignore_changes = [
+      assume_role_policy, // Ignore changes to the assume role policy
+    ]
+  }  
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_policy" {
