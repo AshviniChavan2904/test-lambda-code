@@ -1,15 +1,11 @@
 {
-  "name": "simple-calculator",
-  "version": "1.0.0",
-  "description": "Sample Node-Express app running on AWS Lambda",
-  "main": "calculator.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "buraku",
-  "license": "MIT-O",
-  "dependencies": {
-    "aws-serverless-express": "^3.3.8",
-    "express": "^4.17.1"
-  }
-}
+    "name": "hello-world-lambda",
+    "version": "1.0.0",
+    "description": "A simple Hello World Lambda function",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Your Name",
+    "license": "ISC"
+  }  
