@@ -24,10 +24,11 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20.x'
-        working-directory: lambda-code
 
     - name: Install dependencies
-      run: npm install
+      run: |
+      cd ./lambda-code
+      npm install
 
     - name: Configure AWS Credentials
       env:
