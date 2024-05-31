@@ -28,7 +28,7 @@ resource "aws_iam_role_policy_attachment" "lambda_policy" {
 }
 
 resource "aws_lambda_function" "hello_world_lambda" {
-  function_name    = "hello-world-lambda"
+  function_name    = "lambda-code"
   s3_bucket        = data.aws_s3_bucket.test_bucket.id
   s3_key           = "hello-world-lambda.zip"
   handler          = "index.handler"
