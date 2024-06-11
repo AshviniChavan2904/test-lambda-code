@@ -59,7 +59,7 @@ jobs:
     strategy:
       matrix:
         source: ["lambda-code"]
-    environment: ${{ github.event.inputs.environment }}
+    # environment: ${{ github.event.inputs.environment }}
     steps:
       - name: Download function zip from build job
         uses: actions/download-artifact@v2
