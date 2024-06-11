@@ -92,7 +92,7 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
-        working-directory: ./terrafor m
+        working-directory: ./terraform
 
       - name: Apply Terraform configuration
         if: ${{ github.event.inputs.Action == 'Plan' }}
@@ -100,7 +100,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run:  terraform plan 
-        working-directory: ./terrafor m
+        working-directory: ./terraform
 
       - name: Apply Terraform configuration
         if: ${{ github.event.inputs.Action == 'Apply' }}
@@ -108,7 +108,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: terraform apply -auto-approve
-        working-directory: ./terrafor m
+        working-directory: ./terraform
 
       - name: Destroy Terraform configuration
         if: ${{ github.event.inputs.Action == 'Destroy' }}
