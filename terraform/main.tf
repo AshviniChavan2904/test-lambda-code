@@ -1,9 +1,22 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.47.0"
+    }
+  }
+}
+
 provider "aws" {
   region = "us-east-1"
 }
 
+data "aws_region" "current" {}
+
+data "aws_caller_identity" "current" {}
+
 data "aws_s3_bucket" "test_bucket" {
-  bucket = "my-hello-world-lambda-functions-bucket"
+  bucket = "test-bucket-ashvini"
 }
 
 resource "aws_iam_role" "lambda_role" {
@@ -35,8 +48,9 @@ resource "aws_iam_role_policy_attachment" "lambda_policy" {
 resource "aws_lambda_function" "hello_world_lambda" {
   function_name    = "lambda-code"
   s3_bucket        = data.aws_s3_bucket.test_bucket.id
-  s3_key           = "hello-world-lambda.zip"
+  s3_key           = "lambda-code.zip"
   handler          = "index.handler"
   runtime          = "nodejs20.x"
   role             = aws_iam_role.lambda_role.arn
 }
+
